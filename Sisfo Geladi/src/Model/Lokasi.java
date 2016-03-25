@@ -1,4 +1,4 @@
-package test;
+package Model;
 
 import java.util.ArrayList;
 
@@ -11,10 +11,12 @@ public class Lokasi {
     private Pembimbing pembimbing;
     private ArrayList<Kelompok> kelompok;
     private String namaPerusahaan;
+    private static int id=1;
 
     public Lokasi(String namaPerusahan) {
         this.kelompok = new ArrayList();
         this.namaPerusahaan = namaPerusahan;
+        id++;
     }
 
     public void setPembimbing(Pembimbing p) {
@@ -53,5 +55,14 @@ public class Lokasi {
 
     public Pembimbing getPembimbing() {
         return pembimbing;
+    }
+
+    @Override
+    public String toString() {
+        return "Nama Perusahaan : "+namaPerusahaan+'\n'+"Pembimbing : "+ pembimbing;
+    }
+
+    public ArrayList<Kelompok> getKelompok() {
+        return kelompok;
     }
 }

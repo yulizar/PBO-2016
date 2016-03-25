@@ -1,4 +1,4 @@
-package test;
+package Model;
 
 
 import java.util.ArrayList;
@@ -8,11 +8,11 @@ import java.util.ArrayList;
  */
 public class Kelompok {
     private ArrayList<Mahasiswa> anggota = new ArrayList(); //Pengubahan ketua kelompok
-    private int id; //penambahan keta kelompok
+    private static int id; //penambahan ketua kelompok
     
     //penambahan ketua kelompok
-    public Kelompok (int id){
-        this.id = id;
+    public Kelompok (){
+       id++;
     }
     
     public void addAnggota (Mahasiswa m){

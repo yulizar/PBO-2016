@@ -1,4 +1,4 @@
-package test;
+package Model;
 
 import java.util.Date;
 
@@ -9,6 +9,8 @@ import java.util.Date;
 public class Mahasiswa extends Orang{
     private String nim;
     private String jurusan;
+    private String username;
+    private String password;
     
     public Mahasiswa (String nama,Date tglLahir, String nim, String jurusan){
         super(nama,tglLahir);
@@ -23,4 +25,21 @@ public class Mahasiswa extends Orang{
     public String getJurusan() {
         return jurusan;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
 }
