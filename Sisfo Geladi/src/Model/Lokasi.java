@@ -1,22 +1,24 @@
 package Model;
 
 import java.util.ArrayList;
-
+import java.io.Serializable;
 /**
  *
  * @author Erwin
  */
-public class Lokasi {
+public class Lokasi implements Serializable{
 
     private Pembimbing pembimbing;
     private ArrayList<Kelompok> kelompok;
     private String namaPerusahaan;
-    private static int id=1;
-
+    private static int count=1;
+    private int id;
+    
     public Lokasi(String namaPerusahan) {
         this.kelompok = new ArrayList();
         this.namaPerusahaan = namaPerusahan;
-        id++;
+        count++;
+        id=count++;
     }
 
     public void setPembimbing(Pembimbing p) {
@@ -64,5 +66,9 @@ public class Lokasi {
 
     public ArrayList<Kelompok> getKelompok() {
         return kelompok;
+    }
+
+    public int getId() {
+        return id;
     }
 }

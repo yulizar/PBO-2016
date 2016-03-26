@@ -1,12 +1,12 @@
 package Model;
 
 import java.util.Date;
-
+import java.io.Serializable;
 /**
  *
  * @author Atikawahyu
  */
-public abstract class Orang {
+public abstract class Orang implements Serializable{
 
     private String nama;
     private Date tglLahir;

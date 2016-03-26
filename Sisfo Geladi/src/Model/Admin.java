@@ -4,12 +4,13 @@
  * and open the template in the editor.
  */
 package Model;
+import java.io.Serializable;
 
 /**
  *
  * @author Erwin
  */
-public class Admin extends Orang{
+public class Admin extends Orang implements Serializable{
     private String username;
     private String password;
 
@@ -31,5 +32,10 @@ public class Admin extends Orang{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Admin{" + "username=" + username + ", password=" + password + '}';
     }
 }
