@@ -5,14 +5,14 @@ import java.io.Serializable;
  * @author Andhika
  */
 public class Pembimbing extends Orang implements Serializable{
-    private String nip;
+    private long nip;
     
-    public Pembimbing(String nama, String nip){
+    public Pembimbing(String nama, long nip){
         super(nama);
         this.nip = nip;
     }
 
-    public String getNip() {
+    public long getNip() {
         return nip;
     }
 

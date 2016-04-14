@@ -17,7 +17,6 @@ public class Lokasi implements Serializable{
     public Lokasi(String namaPerusahan) {
         this.kelompok = new ArrayList();
         this.namaPerusahaan = namaPerusahan;
-        count++;
         id=count++;
     }
 
@@ -61,7 +60,7 @@ public class Lokasi implements Serializable{
 
     @Override
     public String toString() {
-        return "Nama Perusahaan : "+namaPerusahaan+'\n'+"Pembimbing : "+ pembimbing;
+        return "id = "+id+", Nama Perusahaan : "+namaPerusahaan+'\n'+"Pembimbing : "+ pembimbing;
     }
 
     public ArrayList<Kelompok> getKelompok() {

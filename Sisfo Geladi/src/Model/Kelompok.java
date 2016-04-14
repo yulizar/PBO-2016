@@ -1,22 +1,22 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Andhika
  */
-public class Kelompok {
+public class Kelompok implements Serializable{
 
-    private ArrayList<Mahasiswa> anggota = new ArrayList(); //Pengubahan ketua kelompok
+    private ArrayList<Mahasiswa> anggota; //Pengubahan ketua kelompok
     private int id; //penambahan ketua kelompok
     private static int count = 1;
 
     //penambahan ketua kelompok
     public Kelompok() {
-        id = count;
-        count++;
-
+        anggota = new ArrayList<>();
+        id = count++;
     }
 
     public void addAnggota(Mahasiswa m) {
@@ -43,6 +43,6 @@ public class Kelompok {
 
     @Override
     public String toString() {
-        return "Kelompok " + getId() + '{' + "anggota=" + anggota + '}';
+        return "Kelompok " + getId() + ' ' + "anggota=" + anggota + " \n";
     }
 }
