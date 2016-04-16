@@ -12,7 +12,7 @@ import javax.swing.JComboBox;
  *
  * @author Andhika
  */
-public class MainMenuMhs extends javax.swing.JFrame {
+public class MainMenuMhs extends javax.swing.JFrame implements View{
 
     /**
      * Creates new form MainMenuMhs
@@ -190,6 +190,11 @@ public class MainMenuMhs extends javax.swing.JFrame {
     public void setCbLokasi(String Lokasi){
         //pake additem, di loop
         //cbLokasi.addItem("TESTEST");
+    }
+
+    @Override
+    public void viewErrorMsg(String errorMsg) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

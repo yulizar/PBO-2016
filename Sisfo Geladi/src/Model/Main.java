@@ -5,17 +5,23 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  *
  * @author Erwin
  */
 public class Main {
 
-    public static void main(String[] args) throws IOException, ClassNotFoundException{
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
-        
+
         Aplikasi ap = new Aplikasi();
-        ap.mainMenu();
+//        ap.mainMenu();
+        ap.load();
+//        ArrayList<Pembimbing> ll = ap.getDaftarPembimbing();
+//        ll.forEach(System.out::println);
+        new Control.Controller(ap);
 //        ArrayList<Lokasi> lk = new ArrayList<>();
 //        Lokasi l = new Lokasi("ABC");
 //        Lokasi l1= new Lokasi("KKKKKK");

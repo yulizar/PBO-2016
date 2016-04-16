@@ -15,6 +15,8 @@ import java.util.Date;
 import java.util.Scanner;
 import java.text.SimpleDateFormat;
 import java.util.InputMismatchException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -64,6 +66,18 @@ public class Aplikasi {
             System.out.println("Error : " + ex.getMessage());
         }
 
+    }
+
+    public ArrayList<Pembimbing> getDaftarPembimbing() {
+        return daftarPembimbing;
+    }
+
+    public ArrayList<Mahasiswa> getDaftarMahasiswa() {
+        return daftarMahasiswa;
+    }
+
+    public ArrayList<Lokasi> getDaftarLokasi() {
+        return daftarLokasi;
     }
 
     /*Array Pembimbing*/
@@ -167,6 +181,13 @@ public class Aplikasi {
             System.out.println(e.getMessage());
             return null;
         }
+    }
+    
+    public String[] getListPembimbing(){
+        List listPembimbing = daftarPembimbing.stream()
+                .filter(e -> !(e instanceof Pembimbing))
+                .map(e -> e.getNip()).collect(Collectors.toList());
+        return (String[]) listPembimbing.stream().toArray(size -> new String[size]);
     }
 
     public void menuDaftarGeladi(Mahasiswa m) {
@@ -556,9 +577,8 @@ public class Aplikasi {
                         System.out.print("Masukkan Password : ");
                         String inputPass = inputString.next();
                         try {
-                            FileInputStream fInput = new FileInputStream("admin.txt");
-                            ObjectInputStream output = new ObjectInputStream(fInput);
-                            Admin adm = (Admin) output.readObject();
+//                            Object MasterAdmin = getObject("admin.txt");
+                            Admin adm = (Admin) getObject("admin.txt");
                             if ((adm.getUsername().equals(inputUser)) && (adm.getPassword().equals(inputPass))) {
                                 System.out.println("Berhasil");
                                 menuSatu();
@@ -575,10 +595,9 @@ public class Aplikasi {
                         System.out.print("Masukkan Password : ");
                         String inputPassMhs = inputString.nextLine();
                         try {
-                            FileInputStream fInput2 = new FileInputStream("mahasiswa.txt");
-                            ObjectInputStream output2 = new ObjectInputStream(fInput2);
-
-                            ArrayList<Mahasiswa> mhs = (ArrayList) output2.readObject();
+//                            FileInputStream fInput2 = new FileInputStream("mahasiswa.txt");
+//                            ObjectInputStream output2 = new ObjectInputStream(fInput2);
+                            ArrayList<Mahasiswa> mhs = (ArrayList) getObject("mahasiswa.txt");
                             for (Mahasiswa m : mhs) {
                                 if (m.getUsername().equals(inputUserMhs) && m.getPassword().equals(inputPassMhs)) {
                                     menuDua(m);

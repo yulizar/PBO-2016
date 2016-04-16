@@ -5,6 +5,7 @@
  */
 package ViewAdmin;
 
+import View.View;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
@@ -12,7 +13,7 @@ import javax.swing.JButton;
  *
  * @author Erwin
  */
-public class SetPembimbing extends javax.swing.JFrame {
+public class SetPembimbing extends javax.swing.JFrame implements View{
 
     /**
      * Creates new form SetPembimbing1
@@ -36,6 +37,7 @@ public class SetPembimbing extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         lokasiCombo = new javax.swing.JComboBox();
         btnSet = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,6 +48,11 @@ public class SetPembimbing extends javax.swing.JFrame {
         jLabel2.setText("Pilih Pembimbing : ");
 
         comboPembimbing.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pembimbing 1", "Pembimbing 2", "Pembimbing 3", "Pembimbing 4", "Pembimbing 5" }));
+        comboPembimbing.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboPembimbingActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Pilih Lokasi         : ");
@@ -54,6 +61,8 @@ public class SetPembimbing extends javax.swing.JFrame {
 
         btnSet.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnSet.setText("Set");
+
+        btnBack.setText("Back");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -73,7 +82,9 @@ public class SetPembimbing extends javax.swing.JFrame {
                             .addComponent(lokasiCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(109, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(btnBack)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSet, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
@@ -90,16 +101,23 @@ public class SetPembimbing extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(lokasiCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(btnSet, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSet, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void comboPembimbingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPembimbingActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboPembimbingActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSet;
     private javax.swing.JComboBox comboPembimbing;
     private javax.swing.JLabel jLabel1;
@@ -109,12 +127,24 @@ public class SetPembimbing extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     
+    @Override
     public void addListener(ActionListener al ){
         btnSet.addActionListener(al);
+        btnBack.addActionListener(al);
     }
 
     public JButton getBtnSet() {
         return btnSet;
     }
+
+    public JButton getBtnBack() {
+        return btnBack;
+    }
+
+    @Override
+    public void viewErrorMsg(String errorMsg) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
     
 }

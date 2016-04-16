@@ -12,7 +12,7 @@ import javax.swing.JButton;
  *
  * @author Andhika
  */
-public class MenuLokasiMhs extends javax.swing.JFrame {
+public class MenuLokasiMhs extends javax.swing.JFrame implements View{
 
     /**
      * Creates new form MenuLokasiMhs
@@ -134,6 +134,7 @@ public class MenuLokasiMhs extends javax.swing.JFrame {
     private javax.swing.JTextField txFieldLokasi;
     // End of variables declaration//GEN-END:variables
     
+    @Override
     public void addListener(ActionListener e){
         btnBack1.addActionListener(e);
         btnMainMenu1.addActionListener(e);
@@ -153,6 +154,11 @@ public class MenuLokasiMhs extends javax.swing.JFrame {
     
     public void setTxFieldLokasi(String Lokasi){
         txFieldLokasi.setText(Lokasi);
+    }
+
+    @Override
+    public void viewErrorMsg(String errorMsg) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

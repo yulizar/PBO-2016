@@ -5,6 +5,7 @@
  */
 package ViewAdmin;
 
+import View.View;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
@@ -12,7 +13,7 @@ import javax.swing.JButton;
  *
  * @author Erwin
  */
-public class MenuLokasi extends javax.swing.JFrame {
+public class MenuLokasi extends javax.swing.JFrame implements View{
 
     /**
      * Creates new form MenuLokasi1
@@ -34,6 +35,7 @@ public class MenuLokasi extends javax.swing.JFrame {
         btnList = new javax.swing.JButton();
         btnDaftarKelompok = new javax.swing.JButton();
         btnSetPembimbing = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,6 +58,8 @@ public class MenuLokasi extends javax.swing.JFrame {
 
         btnSetPembimbing.setText("Set Pembimbing");
 
+        btnBack.setText("Back");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -70,7 +74,10 @@ public class MenuLokasi extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnDaftarKelompok)
                             .addComponent(btnSetPembimbing, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnList, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnList, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnBack)))
                 .addContainerGap(105, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -84,7 +91,9 @@ public class MenuLokasi extends javax.swing.JFrame {
                 .addComponent(btnDaftarKelompok, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnSetPembimbing, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addComponent(btnBack)
+                .addContainerGap())
         );
 
         pack();
@@ -100,6 +109,7 @@ public class MenuLokasi extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDaftarKelompok;
     private javax.swing.JButton btnList;
     private javax.swing.JButton btnSetPembimbing;
@@ -107,10 +117,12 @@ public class MenuLokasi extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     
+    @Override
     public void addListener(ActionListener al){
         btnDaftarKelompok.addActionListener(al);
         btnList.addActionListener(al);
         btnSetPembimbing.addActionListener(al);
+        btnBack.addActionListener(al);
     }
 
     public JButton getBtnDaftarKelompok() {
@@ -125,4 +137,12 @@ public class MenuLokasi extends javax.swing.JFrame {
         return btnSetPembimbing;
     }
     
+    public JButton getBtnBack(){
+        return btnBack;
+    }
+
+    @Override
+    public void viewErrorMsg(String errorMsg) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

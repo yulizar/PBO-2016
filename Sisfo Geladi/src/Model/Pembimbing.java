@@ -18,6 +18,6 @@ public class Pembimbing extends Orang implements Serializable{
 
     @Override
     public String toString() {
-        return "Pembimbing : "+super.getNama()+ ", nip= " + nip;
+        return "Nama Pembimbing : "+super.getNama()+ ", nip= " + nip;
     }
 }

@@ -5,6 +5,7 @@
  */
 package ViewAdmin;
 
+import View.View;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import javax.swing.JButton;
@@ -13,7 +14,7 @@ import javax.swing.JButton;
  *
  * @author Erwin
  */
-public class DaftarKelompok extends javax.swing.JFrame {
+public class DaftarKelompok extends javax.swing.JFrame implements View{
 
     /**
      * Creates new form DaftarKelompok1
@@ -119,5 +120,10 @@ public class DaftarKelompok extends javax.swing.JFrame {
 
     public JButton getBtnBack() {
         return btnBack;
+    }
+
+    @Override
+    public void viewErrorMsg(String errorMsg) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

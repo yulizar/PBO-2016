@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
  *
  * @author user
  */
-public class OutputBerhasil extends javax.swing.JFrame {
+public class OutputBerhasil extends javax.swing.JFrame implements View{
 
     /**
      * Creates new form OutputBerhasil
@@ -102,8 +102,13 @@ public class OutputBerhasil extends javax.swing.JFrame {
         return btnMenu;
     }
 
-    public void addActionListener(ActionListener e) {
+    public void addListener(ActionListener e) {
         btnMenu.addActionListener(e);
         btnLog.addActionListener(e);
+    }
+
+    @Override
+    public void viewErrorMsg(String errorMsg) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

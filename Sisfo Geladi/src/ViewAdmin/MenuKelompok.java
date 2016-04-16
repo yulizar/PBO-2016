@@ -5,6 +5,7 @@
  */
 package ViewAdmin;
 
+import View.View;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
@@ -12,7 +13,7 @@ import javax.swing.JButton;
  *
  * @author Erwin
  */
-public class MenuKelompok extends javax.swing.JFrame {
+public class MenuKelompok extends javax.swing.JFrame implements View {
 
     /**
      * Creates new form MenuKelompok1
@@ -34,6 +35,7 @@ public class MenuKelompok extends javax.swing.JFrame {
         btnList = new javax.swing.JButton();
         btnTambah = new javax.swing.JButton();
         btnHapus = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,6 +58,8 @@ public class MenuKelompok extends javax.swing.JFrame {
             }
         });
 
+        btnBack.setText("Back");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -72,6 +76,10 @@ public class MenuKelompok extends javax.swing.JFrame {
                 .addGap(96, 96, 96)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(103, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnBack)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -84,7 +92,9 @@ public class MenuKelompok extends javax.swing.JFrame {
                 .addComponent(btnTambah)
                 .addGap(18, 18, 18)
                 .addComponent(btnHapus)
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addComponent(btnBack)
+                .addContainerGap())
         );
 
         pack();
@@ -100,17 +110,19 @@ public class MenuKelompok extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnHapus;
     private javax.swing.JButton btnList;
     private javax.swing.JButton btnTambah;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 
-    
-    public void addListener(ActionListener al){
+    @Override
+    public void addListener(ActionListener al) {
         btnList.addActionListener(al);
         btnTambah.addActionListener(al);
         btnHapus.addActionListener(al);
+        btnBack.addActionListener(al);
     }
 
     public JButton getBtnHapus() {
@@ -124,5 +136,14 @@ public class MenuKelompok extends javax.swing.JFrame {
     public JButton getBtnTambah() {
         return btnTambah;
     }
-    
+
+    public JButton getBtnBack() {
+        return btnBack;
+    }
+
+    @Override
+    public void viewErrorMsg(String errorMsg) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

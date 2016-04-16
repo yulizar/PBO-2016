@@ -5,13 +5,14 @@
  */
 package ViewAdmin;
 
+import View.View;
 import java.awt.event.ActionListener;
 
 /**
  *
  * @author Erwin
  */
-public class MenuDataPembimbing extends javax.swing.JFrame {
+public class MenuDataPembimbing extends javax.swing.JFrame implements View{
 
     /**
      * Creates new form MenuDataPembimbing1
@@ -131,6 +132,7 @@ public class MenuDataPembimbing extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     
+    @Override
     public void addListener (ActionListener al){
         btnPembimbing1.addActionListener(al);
         btnPembimbing2.addActionListener(al);
@@ -147,6 +149,11 @@ public class MenuDataPembimbing extends javax.swing.JFrame {
 
     public Object getBtnPembimbing2() {
         return btnPembimbing2;
+    }
+
+    @Override
+    public void viewErrorMsg(String errorMsg) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

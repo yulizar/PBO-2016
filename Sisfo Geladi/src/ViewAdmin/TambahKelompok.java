@@ -5,6 +5,7 @@
  */
 package ViewAdmin;
 
+import View.View;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
@@ -12,7 +13,7 @@ import javax.swing.JButton;
  *
  * @author Erwin
  */
-public class TambahKelompok extends javax.swing.JFrame {
+public class TambahKelompok extends javax.swing.JFrame implements View{
 
     /**
      * Creates new form TambahKelompok1
@@ -34,6 +35,7 @@ public class TambahKelompok extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         comboPilih = new javax.swing.JComboBox();
         btnTambah = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,6 +54,8 @@ public class TambahKelompok extends javax.swing.JFrame {
             }
         });
 
+        btnBack.setText("Back");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -68,7 +72,10 @@ public class TambahKelompok extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(102, 102, 102)
-                        .addComponent(btnTambah)))
+                        .addComponent(btnTambah))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnBack)))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -82,7 +89,9 @@ public class TambahKelompok extends javax.swing.JFrame {
                     .addComponent(comboPilih, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
                 .addComponent(btnTambah)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnBack)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
@@ -94,18 +103,33 @@ public class TambahKelompok extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnTambah;
     private javax.swing.JComboBox comboPilih;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 
+    @Override
     public void addListener(ActionListener al) {
         btnTambah.addActionListener(al);
+        btnBack.addActionListener(al);
     }
 
     public JButton getBtnTambah() {
         return btnTambah;
     }
 
+    public JButton getBtnBack(){
+        return btnBack;
+    }
+    
+    public int getComboPilih(){
+        return comboPilih.getSelectedIndex()+1;
+    }
+
+    @Override
+    public void viewErrorMsg(String errorMsg) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -5,13 +5,14 @@
  */
 package ViewAdmin;
 
+import View.View;
 import java.awt.event.ActionListener;
 
 /**
  *
  * @author Erwin
  */
-public class MainMenuAdmin extends javax.swing.JFrame {
+public class MainMenuAdmin extends javax.swing.JFrame implements View{
 
     /**
      * Creates new form MainMenuAdmin1
@@ -111,6 +112,11 @@ public class MainMenuAdmin extends javax.swing.JFrame {
 
     public Object getBtnAdmin4() {
         return btnAdmin4;
+    }
+
+    @Override
+    public void viewErrorMsg(String errorMsg) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
