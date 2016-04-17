@@ -17,12 +17,15 @@ public class Main {
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
 
         Aplikasi ap = new Aplikasi();
-//        ap.mainMenu();
-        ap.load();
+
+//        ap.load();
 //        ArrayList<Pembimbing> ll = ap.getDaftarPembimbing();
 //        ll.forEach(System.out::println);
         new Control.Controller(ap);
-//        ArrayList<Lokasi> lk = new ArrayList<>();
+        ap.mainMenu();
+//        System.out.println(ap.getKelompok("Telkom Bandung").toString());
+//        ArrayList<Lokasi> lk = ap.getDaftarLokasi();
+//        lk.forEach(System.out::println);
 //        Lokasi l = new Lokasi("ABC");
 //        Lokasi l1= new Lokasi("KKKKKK");
 //        Kelompok k = new Kelompok();

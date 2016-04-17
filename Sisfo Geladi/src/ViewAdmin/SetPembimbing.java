@@ -13,7 +13,7 @@ import javax.swing.JButton;
  *
  * @author Erwin
  */
-public class SetPembimbing extends javax.swing.JFrame implements View{
+public class SetPembimbing extends javax.swing.JFrame implements View {
 
     /**
      * Creates new form SetPembimbing1
@@ -47,7 +47,7 @@ public class SetPembimbing extends javax.swing.JFrame implements View{
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Pilih Pembimbing : ");
 
-        comboPembimbing.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pembimbing 1", "Pembimbing 2", "Pembimbing 3", "Pembimbing 4", "Pembimbing 5" }));
+        comboPembimbing.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Bambs", "Adam", "Yuslan", "Rizza" }));
         comboPembimbing.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboPembimbingActionPerformed(evt);
@@ -57,7 +57,7 @@ public class SetPembimbing extends javax.swing.JFrame implements View{
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Pilih Lokasi         : ");
 
-        lokasiCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lokasi 1", "Lokasi 2", "Lokasi 3", "Lokasi 4", "Lokasi 5" }));
+        lokasiCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Telkom Bandung", "Telkom Jakarta", "Telkom Semarang", "Telkom Medan", "Telkom Pontianak", "Telkom Makassar" }));
 
         btnSet.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnSet.setText("Set");
@@ -80,7 +80,7 @@ public class SetPembimbing extends javax.swing.JFrame implements View{
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(comboPembimbing, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lokasiCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnBack)
@@ -126,13 +126,6 @@ public class SetPembimbing extends javax.swing.JFrame implements View{
     private javax.swing.JComboBox lokasiCombo;
     // End of variables declaration//GEN-END:variables
 
-    
-    @Override
-    public void addListener(ActionListener al ){
-        btnSet.addActionListener(al);
-        btnBack.addActionListener(al);
-    }
-
     public JButton getBtnSet() {
         return btnSet;
     }
@@ -140,11 +133,24 @@ public class SetPembimbing extends javax.swing.JFrame implements View{
     public JButton getBtnBack() {
         return btnBack;
     }
+    
+    public String getPembimbing() {
+        return (String) comboPembimbing.getSelectedItem();
+    }
+    
+    public int getLokasi() {
+        return lokasiCombo.getSelectedIndex() + 1;
+    }
+
+    @Override
+    public void addListener(ActionListener al) {
+        btnSet.addActionListener(al);
+        btnBack.addActionListener(al);
+    }
 
     @Override
     public void viewErrorMsg(String errorMsg) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
+
 }

@@ -161,8 +161,6 @@ public class TambahPembimbing extends javax.swing.JFrame implements View{
         btnBack.addActionListener(al);
     }
 
-
-
     public String getTextFieldNama() {
         return textFieldNama.getText();
     }
@@ -177,6 +175,11 @@ public class TambahPembimbing extends javax.swing.JFrame implements View{
 
     public JButton getBtnBack() {
         return btnBack;
+    }
+    
+    public void reset(){
+        textFieldNama.setText("");
+        textFieldNip.setText("");
     }
 
     @Override

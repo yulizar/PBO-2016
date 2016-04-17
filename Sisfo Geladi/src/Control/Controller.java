@@ -157,7 +157,7 @@ public class Controller extends MouseAdapter implements ActionListener {
             } else if (source.equals(lp.getBtnRefresh())) {// MAsih belom bisa nge get list Pembimbing
                 try {
                     ArrayList<Pembimbing> listP = model.getDaftarPembimbing();
-                    for (int i= 0; i<listP.size(); i++) {
+                    for (int i = 0; i < listP.size(); i++) {
                         lp.getTblPembimbing().setValueAt(listP.get(i).getNama(), i, 0);
                         lp.getTblPembimbing().setValueAt(listP.get(i).getNip(), i, 1);
                     }
@@ -176,14 +176,13 @@ public class Controller extends MouseAdapter implements ActionListener {
                 } catch (IOException ex) {
                     tp.viewErrorMsg(ex.getMessage());
                 }
+                tp.reset();
             } else if (source.equals(tp.getBtnBack())) {
                 MainMenuAdmin ma = new MainMenuAdmin();
                 ma.setVisible(true);
                 ma.addListener(this);
                 tp.dispose();
                 view = ma;
-            } else {
-
             }
         } else if (view instanceof MenuLokasi) {
             MenuLokasi ml = (MenuLokasi) view;
@@ -205,7 +204,7 @@ public class Controller extends MouseAdapter implements ActionListener {
                 sp.addListener(this);
                 ml.dispose();
                 view = sp;
-            } else if (source.equals(ml.getBtnBack())){
+            } else if (source.equals(ml.getBtnBack())) {
                 MainMenuAdmin ma = new MainMenuAdmin();
                 ma.setVisible(true);
                 ma.addListener(this);
@@ -214,44 +213,56 @@ public class Controller extends MouseAdapter implements ActionListener {
             }
         } else if (view instanceof ListLokasi) {//Tinggal List Lokasi
             ListLokasi ll = (ListLokasi) view;
+
             if (source.equals(ll.getBtnBack())) {
-                MenuKelompok mk = new MenuKelompok();
+                MenuLokasi mk = new MenuLokasi();
                 mk.setVisible(true);
                 mk.addListener(this);
                 ll.dispose();
                 view = mk;
+            } else if (source.equals(ll.getBtnRefresh())) {
+                ArrayList<Lokasi> listLokasi = model.getDaftarLokasi();
+                String[] list = new String[listLokasi.size()];
+                for (int i = 0; i < listLokasi.size(); i++) {
+                    list[i] = listLokasi.get(i).getNamaPerusahaan();
+                }
+                ll.setListLokasi(list);
             }
-        } else if (view instanceof SetPembimbing) {
+        } else if (view instanceof SetPembimbing) {// Done dude
             SetPembimbing sp = (SetPembimbing) view;
             if (source.equals(sp.getBtnSet())) {
-
+                String pembimbing = sp.getPembimbing();
+                int lokasi = sp.getLokasi();
+                model.setPembimbingOfLokasi(pembimbing, lokasi);
+                JOptionPane.showMessageDialog(sp, pembimbing);
             } else if (source.equals(sp.getBtnBack())) {
                 MenuLokasi ml = new MenuLokasi();
                 ml.setVisible(true);
                 ml.addListener(this);
                 sp.dispose();
+                view = ml;
             }
         } else if (view instanceof MenuKelompok) {
             MenuKelompok mk = (MenuKelompok) view;
-            if (source.equals(mk.getBtnList())){
-                ListKelompok lk = new ListKelompok();
+            if (source.equals(mk.getBtnList())) {
+                DaftarKelompok lk = new DaftarKelompok();
                 lk.setVisible(true);
                 lk.addListener(this);
                 mk.dispose();
                 view = lk;
-            } else if (source.equals(mk.getBtnTambah())){
+            } else if (source.equals(mk.getBtnTambah())) {
                 TambahKelompok tk = new TambahKelompok();
                 tk.setVisible(true);
                 tk.addListener(this);
                 mk.dispose();
                 view = tk;
-            } else if (source.equals(mk.getBtnHapus())){
+            } else if (source.equals(mk.getBtnHapus())) {
                 HapusKelompok hk = new HapusKelompok();
                 hk.setVisible(true);
                 hk.addListener(this);
                 mk.dispose();
                 view = hk;
-            } else if (source.equals(mk.getBtnBack())){
+            } else if (source.equals(mk.getBtnBack())) {
                 MainMenuAdmin ma = new MainMenuAdmin();
                 ma.setVisible(true);
                 ma.addListener(this);
@@ -267,25 +278,59 @@ public class Controller extends MouseAdapter implements ActionListener {
                 ml.addListener(this);
                 dk.dispose();
                 view = ml;
+            } else if (source.equals(dk.getBtnRefresh())) {// Belom selesai
+                try {
+                    model.load();
+                    ArrayList<Lokasi> listLokasi = model.getDaftarLokasi();
+                    String[] list = new String[listLokasi.size()];
+                    for (int i = 0; i < listLokasi.size(); i++) {
+                        list[i] = listLokasi.get(i).getNamaPerusahaan();
+                    }
+                    dk.setListLokasi(list);
+                } catch (Exception e) {
+                    e.getMessage();
+                }
+                dk.setKelompok("");
             }
-        } else if (view instanceof TambahKelompok) {
+        } else if (view instanceof TambahKelompok) {//DOne
             TambahKelompok tk = (TambahKelompok) view;
 
             if (source.equals(tk.getBtnTambah())) {
-                ;
+                String lokasi = tk.getComboPilih();
+                ArrayList<Lokasi> listLok = model.getDaftarLokasi();
+                for (Lokasi ll : listLok) {
+                    if (ll.getNamaPerusahaan().equals(lokasi)){
+                        ll.createKelompok(new Kelompok());
+                    }
+                }
+                JOptionPane.showMessageDialog(tk, "Berhasil Menambah Kelompok");
+            } else if (source.equals(tk.getBtnBack())) {
+                MenuKelompok mk = new MenuKelompok();
+                mk.setVisible(true);
+                mk.addListener(this);
+                tk.dispose();
+                view = mk;
             }
         } else if (view instanceof HapusKelompok) {
             HapusKelompok hk = (HapusKelompok) view;
+            try {
+                model.load();
+                    ArrayList<Lokasi> listLokasi = model.getDaftarLokasi();
+                    String[] list = new String[listLokasi.size()];
+                    for (int i = 0; i < listLokasi.size(); i++) {
+                        list[i] = listLokasi.get(i).getNamaPerusahaan();
+                    }
+                    hk.setListLokasi(list);
+            } catch (Exception e) {
+            }
             if (source.equals(hk.getBtnBack())) {
                 MenuKelompok mk = new MenuKelompok();
                 mk.setVisible(true);
                 mk.addListener(this);
                 hk.dispose();
                 view = mk;
-            } 
-        }
-        /*BATAS VIEW ADMIN & VIEW MAHASISWA*/ 
-        else if (view instanceof LoginMhs) {
+            }
+        } /*BATAS VIEW ADMIN & VIEW MAHASISWA*/ else if (view instanceof LoginMhs) {
             LoginMhs lm = (LoginMhs) view;
             if (source.equals(lm.getBtnLogIn())) {
                 String inputNim = lm.getTfNim();
@@ -315,30 +360,30 @@ public class Controller extends MouseAdapter implements ActionListener {
             }
         } else if (view instanceof MenuPendaftaranGeladi) {
             MenuPendaftaranGeladi mg = (MenuPendaftaranGeladi) view;
-            if(source.equals(mg.getBtnLok())){
+            if (source.equals(mg.getBtnLok())) {
                 MenuLokasiMhs mlm = new MenuLokasiMhs();
                 mlm.setVisible(true);
                 mlm.addListener(this);
                 mg.dispose();
                 view = mlm;
-            } else if (source.equals(mg.getBtnDaftar())){
+            } else if (source.equals(mg.getBtnDaftar())) {
                 FormPendaftaran fp = new FormPendaftaran();
                 fp.setVisible(true);
                 fp.addListener(this);
                 mg.dispose();
                 view = fp;
             }
-        } else if (view instanceof MenuLokasiMhs){
+        } else if (view instanceof MenuLokasiMhs) {
             MenuLokasiMhs mlm = (MenuLokasiMhs) view;
-            
-        } else if (view instanceof FormPendaftaran){
+
+        } else if (view instanceof FormPendaftaran) {
             FormPendaftaran fp = (FormPendaftaran) view;
-            if (source.equals(fp.getBtnDaftar())){
+            if (source.equals(fp.getBtnDaftar())) {
                 String inputNama = fp.getjNama();
                 String inputNim = fp.getjNim();
                 // ngisi segala macam, ntar di save ke file lokasi geladi
                 JOptionPane.showMessageDialog(fp, "Pendaftaran Berhasil");
-            } else if (source.equals(fp.getBtnBack())){
+            } else if (source.equals(fp.getBtnBack())) {
                 MainMenuMhs ms = new MainMenuMhs();
                 ms.setVisible(true);
                 ms.addListener(this);
@@ -347,12 +392,15 @@ public class Controller extends MouseAdapter implements ActionListener {
             }
         }
     }
-    
+
     @Override
-    public void mousePressed(MouseEvent me){
-        if (view instanceof ListPembimbing){
-            ListPembimbing lp = (ListPembimbing) view;
-//            String idPembimbing = lp.getSelec
+    public void mousePressed(MouseEvent me) {
+        if (view instanceof DaftarKelompok) {
+            DaftarKelompok dk = (DaftarKelompok) view;
+            String lokasi = dk.getSelectedLokasi();
+            if (lokasi != null) {
+                dk.setKelompok(model.getKelompok(lokasi).toString());
+            }
         }
     }
 }

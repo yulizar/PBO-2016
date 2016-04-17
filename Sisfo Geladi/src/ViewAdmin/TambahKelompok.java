@@ -45,7 +45,7 @@ public class TambahKelompok extends javax.swing.JFrame implements View{
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Pilih Lokasi Kelompok  :");
 
-        comboPilih.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboPilih.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Telkom Bandung", "Telkom Jakarta", "Telkom Semarang", "Telkom Medan", "Telkom Pontianak", "Telkom Makassar" }));
 
         btnTambah.setText("Tambah Kelompok");
         btnTambah.addActionListener(new java.awt.event.ActionListener() {
@@ -66,7 +66,7 @@ public class TambahKelompok extends javax.swing.JFrame implements View{
                         .addGap(39, 39, 39)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(comboPilih, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(comboPilih, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(84, 84, 84)
                         .addComponent(jLabel1))
@@ -76,7 +76,7 @@ public class TambahKelompok extends javax.swing.JFrame implements View{
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnBack)))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,8 +124,8 @@ public class TambahKelompok extends javax.swing.JFrame implements View{
         return btnBack;
     }
     
-    public int getComboPilih(){
-        return comboPilih.getSelectedIndex()+1;
+    public String getComboPilih(){
+        return (String) comboPilih.getSelectedItem();
     }
 
     @Override

@@ -56,6 +56,9 @@ public class ListPembimbing extends javax.swing.JFrame implements View{
                 {null, null},
                 {null, null},
                 {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
                 {null, null}
             },
             new String [] {

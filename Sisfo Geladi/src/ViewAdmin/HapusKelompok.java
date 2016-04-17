@@ -33,9 +33,9 @@ public class HapusKelompok extends javax.swing.JFrame implements View {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        listLokasi = new javax.swing.JList();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        taKelompok = new javax.swing.JTextArea();
         btnBack = new javax.swing.JButton();
         btnHapus = new javax.swing.JButton();
 
@@ -44,11 +44,11 @@ public class HapusKelompok extends javax.swing.JFrame implements View {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Hapus Kelompok");
 
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(listLokasi);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        taKelompok.setColumns(20);
+        taKelompok.setRows(5);
+        jScrollPane2.setViewportView(taKelompok);
 
         btnBack.setText("Back");
 
@@ -100,10 +100,10 @@ public class HapusKelompok extends javax.swing.JFrame implements View {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnHapus;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JList listLokasi;
+    private javax.swing.JTextArea taKelompok;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -118,6 +118,10 @@ public class HapusKelompok extends javax.swing.JFrame implements View {
 
     public JButton getBtnHapus() {
         return btnHapus;
+    }
+    
+    public void setListLokasi(String list[]){
+        listLokasi.setListData(list);
     }
 
     @Override

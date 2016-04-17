@@ -189,7 +189,32 @@ public class Aplikasi {
                 .map(e -> e.getNip()).collect(Collectors.toList());
         return (String[]) listPembimbing.stream().toArray(size -> new String[size]);
     }
-
+    
+    public ArrayList<Kelompok> getKelompok(String lokasi){
+        Kelompok k = new Kelompok();
+        for (Lokasi lok : daftarLokasi) {
+            if(lok.getNamaPerusahaan().equals(lokasi)){
+                return lok.getKelompok();
+            }
+        }
+        return null;
+    }
+    
+    public void setPembimbingOfLokasi(String pembimbing, int lokasi){
+        Pembimbing pemb = null;
+        
+        for (Pembimbing p : daftarPembimbing) {
+            if(p.getNama().equals(pembimbing)){
+                pemb = p;
+            }
+        }
+        for (Lokasi l1 : daftarLokasi) {
+            if (l1.getId() == lokasi){
+                l1.setPembimbing(pemb);
+            }
+        }
+    }
+    
     public void menuDaftarGeladi(Mahasiswa m) {
         System.out.println("Lokasi \n");
         viewAllLokasi();

@@ -9,12 +9,13 @@ import View.View;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Erwin
  */
-public class DaftarKelompok extends javax.swing.JFrame implements View{
+public class DaftarKelompok extends javax.swing.JFrame implements View {
 
     /**
      * Creates new form DaftarKelompok1
@@ -38,6 +39,7 @@ public class DaftarKelompok extends javax.swing.JFrame implements View{
         jScrollPane2 = new javax.swing.JScrollPane();
         txKelompok = new javax.swing.JTextArea();
         btnBack = new javax.swing.JButton();
+        btnRefresh = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,6 +54,8 @@ public class DaftarKelompok extends javax.swing.JFrame implements View{
 
         btnBack.setText("Back");
 
+        btnRefresh.setText("Refresh");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -64,12 +68,15 @@ public class DaftarKelompok extends javax.swing.JFrame implements View{
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnBack)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnBack)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 295, Short.MAX_VALUE)
+                                .addComponent(btnRefresh))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,7 +88,9 @@ public class DaftarKelompok extends javax.swing.JFrame implements View{
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                     .addComponent(jScrollPane2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                .addComponent(btnBack)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBack)
+                    .addComponent(btnRefresh))
                 .addContainerGap())
         );
 
@@ -91,6 +100,7 @@ public class DaftarKelompok extends javax.swing.JFrame implements View{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnRefresh;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList listLokasi;
@@ -101,25 +111,31 @@ public class DaftarKelompok extends javax.swing.JFrame implements View{
     public String getSelectedLokasi() {
         return (String) listLokasi.getSelectedValue();
     }
-    
+
     public void setListLokasi(String List[]) {
         listLokasi.setListData(List);
     }
-    
-    public void setKelompok (String s){
+
+    public void setKelompok(String s) {
         txKelompok.setText(s);
     }
 
     public void addAdapter(MouseAdapter me) {
         listLokasi.addMouseListener(me);
     }
-    
-    public void addListener (ActionListener ae){
-        btnBack.addActionListener(ae);
+
+    public JButton getBtnRefresh() {
+        return btnRefresh;
     }
 
     public JButton getBtnBack() {
         return btnBack;
+    }
+
+    @Override
+    public void addListener(ActionListener ae) {
+        btnBack.addActionListener(ae);
+        btnRefresh.addActionListener(ae);
     }
 
     @Override
