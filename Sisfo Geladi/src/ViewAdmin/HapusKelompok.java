@@ -38,6 +38,7 @@ public class HapusKelompok extends javax.swing.JFrame implements View {
         taKelompok = new javax.swing.JTextArea();
         btnBack = new javax.swing.JButton();
         btnHapus = new javax.swing.JButton();
+        btnRefresh = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,6 +55,8 @@ public class HapusKelompok extends javax.swing.JFrame implements View {
 
         btnHapus.setText("Hapus");
 
+        btnRefresh.setText("Refresh");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -69,6 +72,8 @@ public class HapusKelompok extends javax.swing.JFrame implements View {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnBack)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnRefresh)
+                                .addGap(76, 76, 76)
                                 .addComponent(btnHapus))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -88,7 +93,8 @@ public class HapusKelompok extends javax.swing.JFrame implements View {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
-                    .addComponent(btnHapus))
+                    .addComponent(btnHapus)
+                    .addComponent(btnRefresh))
                 .addGap(23, 23, 23))
         );
 
@@ -99,6 +105,7 @@ public class HapusKelompok extends javax.swing.JFrame implements View {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnHapus;
+    private javax.swing.JButton btnRefresh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -110,6 +117,7 @@ public class HapusKelompok extends javax.swing.JFrame implements View {
     public void addListener(ActionListener e) {
         btnBack.addActionListener(e);
         btnHapus.addActionListener(e);
+        btnRefresh.addActionListener(e);
     }
 
     public JButton getBtnBack() {
@@ -119,8 +127,12 @@ public class HapusKelompok extends javax.swing.JFrame implements View {
     public JButton getBtnHapus() {
         return btnHapus;
     }
-    
-    public void setListLokasi(String list[]){
+
+    public JButton getBtnRefresh() {
+        return btnRefresh;
+    }
+
+    public void setListLokasi(String list[]) {
         listLokasi.setListData(list);
     }
 

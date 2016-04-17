@@ -190,15 +190,18 @@ public class Aplikasi {
         return (String[]) listPembimbing.stream().toArray(size -> new String[size]);
     }
     
-    public ArrayList<Kelompok> getKelompok(String lokasi){
-        Kelompok k = new Kelompok();
-        for (Lokasi lok : daftarLokasi) {
-            if(lok.getNamaPerusahaan().equals(lokasi)){
-                return lok.getKelompok();
-            }
-        }
-        return null;
-    }
+//    public Lokasi getKelompok(String lokasi){
+//        return daftarLokasi.stream()
+//                .filter(e -> e.getNamaPerusahaan().equals(lokasi))
+//                .findFirst().orElse(null);
+////        Kelompok k = new Kelompok();
+////        for (Lokasi lok : daftarLokasi) {
+////            if(lok.getNamaPerusahaan().equals(lokasi)){
+////                return lok.getKelompok();
+////            }
+////        }
+//        
+//    }
     
     public void setPembimbingOfLokasi(String pembimbing, int lokasi){
         Pembimbing pemb = null;

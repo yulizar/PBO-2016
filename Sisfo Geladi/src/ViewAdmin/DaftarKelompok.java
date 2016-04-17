@@ -108,12 +108,12 @@ public class DaftarKelompok extends javax.swing.JFrame implements View {
     private javax.swing.JTextArea txKelompok;
     // End of variables declaration//GEN-END:variables
 
-    public String getSelectedLokasi() {
-        return (String) listLokasi.getSelectedValue();
+    public int getSelectedLokasi() {
+        return  listLokasi.getSelectedIndex();
     }
 
-    public void setListLokasi(String List[]) {
-        listLokasi.setListData(List);
+    public void setListLokasi(String list[]) {
+        listLokasi.setListData(list);
     }
 
     public void setKelompok(String s) {

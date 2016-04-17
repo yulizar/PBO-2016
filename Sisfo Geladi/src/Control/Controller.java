@@ -16,17 +16,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
-import java.util.Date;
-import javax.swing.JPanel;
+
 import View.*;
 import ViewAdmin.*;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.SpringLayout;
 
 /**
  *
@@ -299,7 +296,7 @@ public class Controller extends MouseAdapter implements ActionListener {
                 String lokasi = tk.getComboPilih();
                 ArrayList<Lokasi> listLok = model.getDaftarLokasi();
                 for (Lokasi ll : listLok) {
-                    if (ll.getNamaPerusahaan().equals(lokasi)){
+                    if (ll.getNamaPerusahaan().equals(lokasi)) {
                         ll.createKelompok(new Kelompok());
                     }
                 }
@@ -313,22 +310,26 @@ public class Controller extends MouseAdapter implements ActionListener {
             }
         } else if (view instanceof HapusKelompok) {
             HapusKelompok hk = (HapusKelompok) view;
-            try {
-                model.load();
+            if (source.equals(hk.getBtnRefresh())) {
+                try {
+                    model.load();
                     ArrayList<Lokasi> listLokasi = model.getDaftarLokasi();
                     String[] list = new String[listLokasi.size()];
                     for (int i = 0; i < listLokasi.size(); i++) {
                         list[i] = listLokasi.get(i).getNamaPerusahaan();
                     }
                     hk.setListLokasi(list);
-            } catch (Exception e) {
-            }
-            if (source.equals(hk.getBtnBack())) {
+                } catch (Exception e) {
+                    e.getMessage();
+                }
+            } else if (source.equals(hk.getBtnBack())) {
                 MenuKelompok mk = new MenuKelompok();
                 mk.setVisible(true);
                 mk.addListener(this);
                 hk.dispose();
                 view = mk;
+            } else if (source.equals(hk.getBtnHapus())) {
+                
             }
         } /*BATAS VIEW ADMIN & VIEW MAHASISWA*/ else if (view instanceof LoginMhs) {
             LoginMhs lm = (LoginMhs) view;
@@ -344,6 +345,7 @@ public class Controller extends MouseAdapter implements ActionListener {
                             mg.addListener(this);
                             lm.dispose();
                             view = mg;
+                            break;
                         }
                     }
                 } catch (IOException ex) {
@@ -375,16 +377,28 @@ public class Controller extends MouseAdapter implements ActionListener {
             }
         } else if (view instanceof MenuLokasiMhs) {
             MenuLokasiMhs mlm = (MenuLokasiMhs) view;
-
+            
+            if (source.equals(mlm.getBtnBack1())){
+                MenuPendaftaranGeladi mg = new MenuPendaftaranGeladi();
+                mg.setVisible(true);
+                mg.addListener(this);
+                mlm.dispose();
+                view = mg;
+            }
         } else if (view instanceof FormPendaftaran) {
             FormPendaftaran fp = (FormPendaftaran) view;
             if (source.equals(fp.getBtnDaftar())) {
                 String inputNama = fp.getjNama();
                 String inputNim = fp.getjNim();
+                int lokasi = fp.getComboLokasi();
+                int klp = fp.getComboKelompok();
+                Date d = fp.getTanggalLahir();
+                String jurusan = fp.getJurusan();
+                model.getDaftarLokasi().get(lokasi).getKelompokById(klp).addAnggota(new Mahasiswa(inputNama, d, inputNim, jurusan));
                 // ngisi segala macam, ntar di save ke file lokasi geladi
                 JOptionPane.showMessageDialog(fp, "Pendaftaran Berhasil");
             } else if (source.equals(fp.getBtnBack())) {
-                MainMenuMhs ms = new MainMenuMhs();
+                MenuPendaftaranGeladi ms = new MenuPendaftaranGeladi();
                 ms.setVisible(true);
                 ms.addListener(this);
                 fp.dispose();
@@ -397,9 +411,16 @@ public class Controller extends MouseAdapter implements ActionListener {
     public void mousePressed(MouseEvent me) {
         if (view instanceof DaftarKelompok) {
             DaftarKelompok dk = (DaftarKelompok) view;
-            String lokasi = dk.getSelectedLokasi();
-            if (lokasi != null) {
-                dk.setKelompok(model.getKelompok(lokasi).toString());
+            int lokasi = dk.getSelectedLokasi();
+            JOptionPane.showMessageDialog(dk, lokasi);
+            if (lokasi != 0) {
+                dk.setKelompok(model.getDaftarLokasi().get(lokasi).getKelompok().toString());
+            }
+        } else if (view instanceof MenuLokasiMhs){
+            MenuLokasiMhs ms = (MenuLokasiMhs) view;
+            int lokasi = ms.getLokasi();
+            if (lokasi != 0){
+                ms.setListKelompok((String[]) model.getDaftarLokasi().get(lokasi).getKelompok().toArray());
             }
         }
     }
